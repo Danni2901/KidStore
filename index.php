@@ -45,89 +45,6 @@ require_once('./connection.php');
 --End-->
 
 <!-- Main menu -->
-<nav class="navbar-main">
-    <div id="mb_mainnav">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-12 col-xs-12 vertical_menu">
-                    <div id="mb_verticle_menu" class="menu-quick-select">
-                        <div class="title_block">
-                            <span>Danh mục sản phẩm</span>
-                        </div>
-                        <div id="menuverti" class="block_content navbar_menuvertical">
-                            <ul class='nav_verticalmenu'>
-                                <li class="has-child level0">
-                                    <a class='' href='san-pham/nghao-so-oc-33804.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s1.png' alt='Nghao - Sò - Ốc'>
-                                        <span>Nghao - Sò - Ốc</span></a>
-                                    <ul class='level1'>
-                                        <li class="level1"><a class='' href='san-pham/ngao-33820.html'><span>Ngao</span></a></li>
-                                        <li class="level1"><a class='' href='san-pham/so-33821.html'><span>Sò</span></a></li>
-                                        <li class="level1"><a class='' href='san-pham/oc-33822.html'><span>Ốc</span></a></li>
-                                        <li class="level1"><a class='' href='san-pham/hau-33823.html'><span>Hàu</span></a></li>
-                                    </ul class='level1'>
-                                </li>
-                                <li class="level0">
-                                    <a class='' href='san-pham/bao-ngu-33805.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s2.png' alt='Bào ngư'> <span>Bào ngư</span></a>
-                                </li>
-                                <li class="level0">
-                                    <a class='' href='san-pham/tom-33806.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s3.png' alt='Tôm'> <span>Tôm</span></a>
-                                </li>
-                                <li class="level0">
-                                    <a class='' href='san-pham/muc-33807.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s4.png' alt='Mực'> <span>Mực</span></a>
-                                </li>
-                                <li class="has-child level0">
-                                    <a class='' href='san-pham/ca-33808.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s5.png' alt='Cá'> <span>Cá</span></a>
-                                    <ul class='level1'>
-                                        <li class="level1"><a class='' href='san-pham/ca-ngu-dai-duong-33824.html'><span>Cá ngừ đại
-                                                    dương</span></a></li>
-                                        <li class="level1"><a class='' href='san-pham/ca-hoi-33825.html'><span>Cá hồi</span></a>
-                                        </li>
-                                    </ul class='level1'>
-                                </li>
-                                <li class="has-child level0">
-                                    <a class='' href='san-pham/cua-nghe-33809.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s6.png' alt='Cua nghẹ'>
-                                        <span>Cua nghẹ</span></a>
-                                    <ul class='level1'>
-                                        <li class="level1"><a class='' href='san-pham/cua-33826.html'><span>Cua</span></a></li>
-                                        <li class="level1"><a class='' href='san-pham/nghe-33827.html'><span>Nghẹ</span></a></li>
-                                    </ul class='level1'>
-                                </li>
-                                <li class="level0">
-                                    <a class='' href='san-pham/sua-33810.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s7.png' alt='Sứa'> <span>Sứa</span></a>
-                                </li>
-                                <li class="level0">
-                                    <a class='' href='san-pham/hai-san-dong-hop-che-bien-33811.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s8.png' alt='Hải sản đóng hộp - chế biến'> <span>Hải sản đóng hộp - chế
-                                            biến</span></a>
-                                </li>
-                                <li class="has-child level0">
-                                    <a class='' href='san-pham/hai-san-kho-33812.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s9.png' alt='Hải sản khô'>
-                                        <span>Hải sản khô</span></a>
-                                    <ul class='level1'>
-                                        <li class="level1"><a class='' href='san-pham/hai-san-kho-33828.html'><span>Hải sản
-                                                    khô</span></a></li>
-                                    </ul class='level1'>
-                                </li>
-                                <li class="level0">
-                                    <a class='' href='san-pham/san-pham-khac-33813.html'><img class='icon-menu' src='Uploads/shop2005/images/icon/s9.png' alt='Sản phẩm khác'> <span>Sản phẩm khác</span></a>
-                                </li>
-                            </ul class='nav_verticalmenu'>
-                        </div>
-                    </div>
-                </div>
-                <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
-                    <ul class='menu nav navbar-nav menu_hori'>
-                        <li class="level0"><a class='' href='index.php'><span>Trang chủ</span></a></li>
-                        <li class="level0"><a class='' href='gioi-thieu.html'><span>Giới thiệu</span></a>
-                        </li>
-                        <li class="level0"><a class='' href='san-pham.html'><span>Sản phẩm</span></a></li>
-                        <li class="level0"><a class='' href='tin-tuc.html'><span>Tin tức</span></a></li>
-                        <li class="level0"><a class='' href='lien-he.html'><span>Liên hệ</span></a></li>
-                    </ul class='menu nav navbar-nav menu_hori'>
-                </nav>
-            </div>
-        </div>
-    </div>
-</nav>
 <!-- End main menu -->
 <script type="text/javascript">
     $(document).ready(function() {
@@ -254,79 +171,165 @@ require_once('./connection.php');
                     </div>
                 </div>
                 <!--End-->
+                <div class="sidebar_blogs">
+                    <h3 title="bài viết mới" class="sidebar_title">
+                        Bài viết nổi bật
+                    </h3>
+                    <div class="blog_content">
+                        <div class="article_item">
+                            <div class="article_img">
+                                <a href="tin-tuc/canh-rong-bien-thit-bo-9165.html">
+                                    <img src="Uploads/shop2005/images/news/vay_ba_bau.jpg" alt="Trang phục cho bà bầu" title="Trang phục cho bà bầu">
+                                </a>
+                            </div>
+                            <div class="article_content clearfix">
+                                <div class="title">
+                                    <h4><a href="tin-tuc/canh-rong-bien-thit-bo-9165.html" title="Trang phục cho bà bầu">Trang phục cho bà bầu</a>
+                                    </h4>
+                                </div>
+                                <div class="article_meta">
+                                    <div class="article_comment">
+                                        <i class="fa fa-comments-o" aria-hidden="true"></i> 0 bình luận
+                                    </div>
+                                    <div class="article_created">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="30/03/2023">30/03/2023</time>
+                                    </div>
+                                </div>
+                                <div class="des">
+                                    <p> Một điều chắc chắn rằng bạn sẽ không thể tránh được những thay
+                                        đổi....</p>
+
+                                </div>
+                                <a class="readmore" href="https://www.huggies.com.vn/mang-thai/cham-soc-trong-thai-ky/trang-phuc-cho-ba-bau">Đọc
+                                    tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="article_item">
+                            <div class="article_img">
+                                <a href="https://www.festival.com.vn/nhung-kieu-phoi-do-dong-dieu-cho-me-va-be-gai-xinh-den-phat-them/">
+                                    <img src="Uploads/shop2005/images/news/thoi_trang_me_va_be.jpg" alt="Những kiểu phối đồ đồng điệu cho mẹ và bé gái xinh" title="Những kiểu phối đồ đồng điệu cho mẹ và bé gái xinh">
+                                </a>
+                            </div>
+                            <div class="article_content clearfix">
+                                <div class="title">
+                                    <h4><a href="https://www.festival.com.vn/nhung-kieu-phoi-do-dong-dieu-cho-me-va-be-gai-xinh-den-phat-them/" title="Những kiểu phối đồ đồng điệu cho mẹ và bé gái xinh">Những
+                                            kiểu phối đồ đồng điệu cho mẹ và bé gái xinh</a>
+                                    </h4>
+                                </div>
+                                <div class="article_meta">
+                                    <div class="article_comment">
+                                        <i class="fa fa-comments-o" aria-hidden="true"></i> 0 bình luận
+                                    </div>
+                                    <div class="article_created">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="27/01/2023">27/01/2023</time>
+                                    </div>
+                                </div>
+                                <div class="des">
+                                    <p>Giờ đây, diện đồ đôi cho mẹ và bé gái đã không còn là xu hướng thời trang
+                                        mới...</p>
+
+                                </div>
+                                <a class="readmore" href="https://www.festival.com.vn/nhung-kieu-phoi-do-dong-dieu-cho-me-va-be-gai-xinh-den-phat-them/">Đọc
+                                    tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="article_item">
+                            <div class="article_img">
+                                <a href="https://www.vinmec.com/vi/tin-tuc/thong-tin-suc-khoe/nhi/cham-soc-tre-so-sinh-den-khi-day-thang/">
+                                    <img src="Uploads/shop2005/images/news/cham_soc_tre_so_sinh.jpg" alt="Phương pháp chăm sóc trẻ sơ sinh khi đầy tháng" title="Phương pháp chăm sóc trẻ sơ sinh khi đầy tháng">
+                                </a>
+                            </div>
+                            <div class="article_content clearfix">
+                                <div class="title">
+                                    <h4><a href="https://www.vinmec.com/vi/tin-tuc/thong-tin-suc-khoe/nhi/cham-soc-tre-so-sinh-den-khi-day-thang/" title="Phương pháp chăm sóc trẻ sơ sinh khi đầy tháng">Phương pháp
+                                            chăm sóc trẻ sơ sinh khi đầy tháng</a></h4>
+                                </div>
+                                <div class="article_meta">
+                                    <div class="article_comment">
+                                        <i class="fa fa-comments-o" aria-hidden="true"></i> 0 bình luận
+                                    </div>
+                                    <div class="article_created">
+                                        <!-- <i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="16/06/2017">16/06/2017</time> -->
+                                    </div>
+                                </div>
+                                <div class="des">
+                                    <p>Sau khi cất tiếng khóc chào đời, trẻ sơ sinh sẽ thoát khỏi sự bao bọc...
+                                    </p>
+
+                                </div>
+                                <a class="readmore" href="https://www.vinmec.com/vi/tin-tuc/thong-tin-suc-khoe/nhi/cham-soc-tre-so-sinh-den-khi-day-thang/">Đọc
+                                    tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <div class="col-md-9">
 
                 <div class="product_home">
-                    <div class="product_home_image">
-                        <a href="san-pham/tom-33806.html">
-                            <img src="Uploads/shop2005/images/slide/image-product-home-1.jpg" alt="T&#244;m">
-                            <div class="figcaption"></div>
-                        </a>
-                    </div>
                     <div class="clearfix">
                         <div class="section-heading">
-                            <h2 title="T&#244;m">
-                                <span>T&#244;m</span>
+                            <h2 title="Sản phẩm">
+                                <span>Sản phẩm</span>
                             </h2>
                         </div>
                     </div>
                     <div class="clearfix">
                         <div class="product-list">
 
-                        <?php   
-                        $sql = "SELECT p.ProductID, p.CategoryID, p.ProductName, p.Price, p.Quantity, p.is_delete, i.ImageID, i.URL
+                            <?php
+                            $sql = "SELECT p.ProductID, p.CategoryID, p.ProductName, p.Price, p.Quantity, p.is_delete, i.ImageID, i.URL
                                 FROM products p
                                 INNER JOIN images i ON p.ProductID = i.ProductID;
                                 ";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            if ($row['is_delete'] == 1) {
-                                continue;
-                            }                              
-                        ?>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow">
-                                <div class="product-block product-resize">
-                                    <div class="product-image image-resize">
-                                        <a href="#">
-                                            <img class="first-img" src="<?php echo $row["URL"] ?>" >
-                                        </a>
-                                        <div class="product-actions hidden-xs">
-                                            <div class="btn-add-to-cart">
-                                                <a href="gio-hang.php?id=<?php echo $row["ProductID"] ?>"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                                            </div>
-                                            <div class="btn_quickview">
-                                                <a class="quickview" href="chi-tiet.php?id=<?php echo $row["ProductID"] ?>"><i class="fa fa-eye"></i></a>
+                            $result = mysqli_query($conn, $sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                if ($row['is_delete'] == 1) {
+                                    continue;
+                                }
+                            ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow">
+                                    <div class="product-block product-resize">
+                                        <div class="product-image image-resize">
+                                            <a href="#">
+                                                <img class="first-img" src="<?php echo $row["URL"] ?>">
+                                            </a>
+                                            <div class="product-actions hidden-xs">
+                                                <div class="btn-add-to-cart">
+                                                    <a href="gio-hang.php?id=<?php echo $row['ProductID']; ?>">
+                                                        <i class="fa fa-shopping-bag" style="margin-top: 10px;" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+
+                                                <div class="btn_quickview">
+                                                    <a class="quickview" href="chi-tiet.php?id=<?php echo $row["ProductID"] ?>"><i class="fa fa-eye" style="margin-top: 10px;"></i></a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="product-info text-center m-t-xxs-20">   
-                                        <h3 class="pro-name">
-                                            <a href="" title="<?php echo $row["ProductName"] ?>"><?php echo $row["ProductName"] ?></a>
-                                        </h3> 
-                                        <h4 class="pro-id">
-                                            <a href="" title="<?php echo $row["ProductID"] ?>">ID: <?php echo $row["ProductID"] ?></a>
-                                        </h4>
-                                        <div class="pro-prices">
-                                            <span class="pro-price"><?php echo $row["Price"] ?>₫</span>
-                                            <del class="pro-compare-price"><?php echo $row["Price"]*1.33 ?>₫</del>
+                                        <div class="product-info text-center m-t-xxs-20">
+                                            <h3 class="pro-name">
+                                                <a href="" title="<?php echo $row["ProductName"] ?>"><?php echo $row["ProductName"] ?></a>
+                                            </h3>
+                                            <h4 class="pro-id">
+                                                <a href="" title="<?php echo $row["ProductID"] ?>">ID: <?php echo $row["ProductID"] ?></a>
+                                            </h4>
+                                            <div class="pro-prices">
+                                                <span class="pro-price"><?php echo $row["Price"] ?>₫</span>
+                                                <del class="pro-compare-price"><?php echo $row["Price"] * 1.33 ?>₫</del>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php 
-                            if(mysqli_num_rows($result) >= 12) {
-                                break;
+                            <?php
+                                if (mysqli_num_rows($result) >= 12) {
+                                    break;
+                                }
                             }
-                        }
-                        ?>
-                        
+                            ?>
+
 
                         </div>
-                    </div>
-                    <div class="show_more">
-                        Mời bạn <a href="san-pham/tom-33806.html">Xem thêm các sản phẩm T&#244;m</a> khác
                     </div>
                 </div>
             </div>
@@ -338,21 +341,61 @@ require_once('./connection.php');
 <div class="partner">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3">
+
+                <script src="app/services/moduleServices.js"></script>
+                <script src="app/controllers/moduleController.js"></script>
+                <!--Begin-->
+
+                <!--End-->
+                <script type="text/javascript">
+                    window.AdvMenus = [{
+                        "Id": 5695,
+                        "ShopId": 2005,
+                        "AdvType": 1,
+                        "AdvTypeName": "Menu 2 bên",
+                        "Name": "1",
+                        "Image": "/Uploads/shop2005/images/adv/banner_sidebar_img_1.jpg",
+                        "ImageThumbnai": "/Uploads/shop2005/_thumbs/images/adv/banner_sidebar_img_1.jpg",
+                        "Link": "#",
+                        "IsVideo": false,
+                        "Index": 1,
+                        "Inactive": false,
+                        "Timestamp": "AAAAAAAoh7c="
+                    }, {
+                        "Id": 5696,
+                        "ShopId": 2005,
+                        "AdvType": 1,
+                        "AdvTypeName": "Menu 2 bên",
+                        "Name": "2",
+                        "Image": "/Uploads/shop2005/images/adv/banner_sidebar_img_2.jpg",
+                        "ImageThumbnai": "/Uploads/shop2005/_thumbs/images/adv/banner_sidebar_img_2.jpg",
+                        "Link": "#",
+                        "IsVideo": false,
+                        "Index": 2,
+                        "Inactive": false,
+                        "Timestamp": "AAAAAAAoh7Y="
+                    }];
+                </script>
+                <!-- Blog sidebar -->
+
+                <!-- End blog sidebar -->
+            </div>
+            <div class="col-md-9">
 
                 <!--Blog-->
                 <section id="blog_index" class="container m-b-20">
                     <div class="row">
-                        <div class="col-md-12 col-xs-12">
+                        <!-- <div class="col-md-12 col-xs-12">
                             <div class="section-heading">
                                 <h2 title="Tin tức nổi bật">
                                     <span>Tin tức nổi bật</span>
                                 </h2>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row">
-                        <div id="blog_index_list" class="owl-carousel">
+                        <!-- <div id="blog_index_list" class="owl-carousel">
                             <div class="article_item">
                                 <div class="article_img">
                                     <a href="tin-tuc/canh-rong-bien-thit-bo-9165.html">
@@ -567,7 +610,7 @@ require_once('./connection.php');
                                         tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </section>
                 <!--EndBlog-->

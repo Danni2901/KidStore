@@ -175,24 +175,29 @@ body {
     right: 20px;
     top: 22px
 }
-.content p{
+
+.content p {
     margin-top: 10px;
     font-size: 14px;
     font-weight: 400;
 }
-.right-side h3{
+
+.right-side h3 {
     margin-top: 20px;
     font-size: 20px;
 }
-.pro-prices .pro-price{
+
+.pro-prices .pro-price {
     font-size: 22px;
     font-weight: 500;
     color: #ae1427;
 }
+
 .buttons .btn1,
-.buttons .btn2{
+.buttons .btn2 {
     margin-top: 10px;
 }
+
 .buttons .btn2 {
     height: 50px;
     width: 180px;
@@ -204,6 +209,7 @@ body {
     font-size: 18px;
 
 }
+
 .buttons .btn1 {
     height: 50px;
     width: 180px;
@@ -213,10 +219,17 @@ body {
     font-weight: 500;
     font-size: 18px;
 }
-.buttons .btn2:hover{
+
+.buttons .btn2:hover {
     border: 3px solid #cb1c22;
 }
-.buttons .btn1:hover{
+
+.buttons .btn1:hover {
     background: #ae1427;
     color: #fff;
+}
+
+user_box {
+    color: White;
+    font-size: 14px;
 }

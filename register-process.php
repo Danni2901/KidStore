@@ -3,11 +3,11 @@
 session_start();
 ob_start();
 require_once('./connection.php');
-include "./header.php";
+include "./header2.php";
 
-if(isset($_POST["UserName"]) && isset($_POST["Password"])) {
+if (isset($_POST["UserName"]) && isset($_POST["Password"])) {
     //get info
-    $UserName = $_POST["UserName"]; 
+    $UserName = $_POST["UserName"];
     $Email = $_POST["Email"];
     $Password = $_POST["Password"];
     $ConfirmPassword = $_POST["ConfirmPassword"];
@@ -17,25 +17,36 @@ if(isset($_POST["UserName"]) && isset($_POST["Password"])) {
     $sql = "SELECT * FROM users WHERE Email='$Email' ";
     $result = mysqli_query($conn, $sql);
 
-    if($UserName === '' || $Email === '' || $Password === ''){
+    if ($UserName === '' || $Email === '' || $Password === '') {
         $message = "Nhập thiếu trường thông tin !";
-    }else if($Password!==$ConfirmPassword){
+        echo '<div style="margin-top: 100px;">' . '</div>';
+    } else if ($Password !== $ConfirmPassword) {
         $message = "Nhập không khớp mật khẩu !";
-    }else if(mysqli_num_rows($result) > 0) {
+        echo '<div style="margin-top: 100px;">' . '</div>';
+    } else if (mysqli_num_rows($result) > 0) {
         $message = "Email đã được đăng ký !";
-    }else{
+        echo '<div style="margin-top: 100px;">' . '</div>';
+    } else {
         //insert database
-            $sql = "INSERT INTO `users`(`UserName`, `Email`, `UserPassword`, `UserType`,`Address`,`PhoneNumber`) VALUES ('$UserName','$Email','$Password','$UserType','$Address','$PhoneNumber')";
-            
-            if(mysqli_query($conn, $sql)) {
-                $message = "Đăng ký thành công!";
-            } else {
-                $message = "Đăng ký thất bại!";
-             }
+        $sql = "INSERT INTO `users`(`UserName`, `Email`, `UserPassword`, `UserType`,`Address`,`PhoneNumber`) VALUES ('$UserName','$Email','$Password','$UserType','$Address','$PhoneNumber')";
+
+        if (mysqli_query($conn, $sql)) {
+            $message = "Đăng ký thành công!";
+            echo '<div style="margin-top: 100px;">' . '</div>';
+        } else {
+            $message = "Đăng ký thất bại!";
+            echo '<div style="margin-top: 100px;">' . '</div>';
+        }
     }
-   
-}else{
+} else {
     $message = "Bạn chưa nhập thông tin !";
+    echo '<div style="margin-top: 100px;">' . '</div>';
 }
-echo "<center><h2>$message</h2><br></br><button class='btn btn-outline-info'><a href='dang-Nhap.php'> Trở lại </a></button></center><br></br>";
+echo "<style>";
+echo ".btn-outline-info a:hover {";
+echo "  color: #ae1427;";
+echo "}";
+echo "</style>";
+
+echo "<center><h2>$message</h2><br></br><button class='btn btn-outline-info'><a href='dang-Nhap.php'>Trở lại</a></button></center><br></br>";
 include "./footer.php";

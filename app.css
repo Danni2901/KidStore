@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 95%;
 }
 
 .product-name {
@@ -11,8 +12,10 @@
 }
 
 .product-price {
-    font-size: 18px;
-    color: #f00;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ae1427;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
