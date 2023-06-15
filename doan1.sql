@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 24, 2023 lúc 05:13 PM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.2.0
+-- Thời gian đã tạo: Th6 15, 2023 lúc 07:02 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,12 @@ CREATE TABLE `category` (
   `CategoryType` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `category`
+--
+
+INSERT INTO `category` (`CategoryID`, `CategoryName`, `CategoryType`) VALUES
+(1, 'Quần Jean', '1');
 
 -- --------------------------------------------------------
 
@@ -46,6 +52,12 @@ CREATE TABLE `images` (
   `URL` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `images`
+--
+
+INSERT INTO `images` (`ImageID`, `ProductID`, `URL`) VALUES
+(16, 41608168, ' Uploads/648a8dcd778aa_0fc21cfd020bd0c7643332affdda4bed.jpg');
 
 -- --------------------------------------------------------
 
@@ -54,16 +66,26 @@ CREATE TABLE `images` (
 --
 
 CREATE TABLE `orderdetails` (
-  `OrderID` int(11) DEFAULT NULL,
+  `OrderID` int(11) NOT NULL,
   `ProductID` int(11) DEFAULT NULL,
   `OrderDate` date DEFAULT NULL,
   `Quantity` int(11) DEFAULT NULL,
   `Total` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `orderdetails`
+--
 
+INSERT INTO `orderdetails` (`OrderID`, `ProductID`, `OrderDate`, `Quantity`, `Total`) VALUES
+(1, 41608168, '2023-06-15', 1, 41),
+(2, 41608168, '2023-06-15', 1, 41);
 
+-- --------------------------------------------------------
 
+--
+-- Cấu trúc bảng cho bảng `products`
+--
 
 CREATE TABLE `products` (
   `ProductID` int(11) NOT NULL,
@@ -74,6 +96,13 @@ CREATE TABLE `products` (
   `discription` varchar(200) DEFAULT NULL,
   `is_delete` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `products`
+--
+
+INSERT INTO `products` (`ProductID`, `CategoryID`, `ProductName`, `Price`, `Quantity`, `discription`, `is_delete`) VALUES
+(41608168, 1, 'Quần Dài Carrera Jeans 617F1283X_45L', 41, 56, 'qẻdqwfqef', 0);
 
 -- --------------------------------------------------------
 
@@ -90,6 +119,11 @@ CREATE TABLE `shoppingorder` (
 --
 -- Đang đổ dữ liệu cho bảng `shoppingorder`
 --
+
+INSERT INTO `shoppingorder` (`OrderID`, `UserID`, `OrderDate`) VALUES
+(1, 10, '2023-06-15'),
+(2, 10, '2023-06-15');
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +140,16 @@ CREATE TABLE `users` (
   `PhoneNumber` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`UserID`, `UserName`, `Email`, `UserPassword`, `UserType`, `Address`, `PhoneNumber`) VALUES
+(10, 'ADMIN', 'admin@admin.com', '123456789', '0', 'HCM', '+123456789');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
 
 --
 -- Chỉ mục cho bảng `category`
@@ -124,7 +168,7 @@ ALTER TABLE `images`
 -- Chỉ mục cho bảng `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  ADD UNIQUE KEY `OrderID` (`OrderID`),
+  ADD PRIMARY KEY (`OrderID`),
   ADD KEY `fkproductID2` (`ProductID`);
 
 --
@@ -138,6 +182,7 @@ ALTER TABLE `products`
 -- Chỉ mục cho bảng `shoppingorder`
 --
 ALTER TABLE `shoppingorder`
+  ADD PRIMARY KEY (`OrderID`),
   ADD KEY `fkUserID` (`UserID`);
 
 --
@@ -154,13 +199,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `images`
 --
 ALTER TABLE `images`
-  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT cho bảng `shoppingorder`
+--
+ALTER TABLE `shoppingorder`
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -172,7 +223,6 @@ ALTER TABLE `users`
 ALTER TABLE `images`
   ADD CONSTRAINT `fkProductID` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`);
 
-
 --
 -- Các ràng buộc cho bảng `products`
 --
@@ -183,5 +233,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-INSERT INTO `users`(`UserName`, `Email`, `UserPassword`, `UserType`, `Address`, `PhoneNumber`) VALUES ('ADMIN','admin@admin.com','123456789',0,'HCM','+123456789')
