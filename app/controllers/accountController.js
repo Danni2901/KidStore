@@ -1,29 +1,29 @@
-﻿appMain.controller('accountController', function ($scope, $rootScope, $location, $window, accountService, alertsService) {
-    $scope.initController = function () {
+﻿appMain.controller('accountController', function($scope, $rootScope, $location, $window, accountService, alertsService) {
+    $scope.initController = function() {
         $scope.initObject();
     }
 
-    $scope.initRegisterController = function () {
+    $scope.initRegisterController = function() {
         $scope.IsSuccess = false;
         $scope.IsError = false;
         $scope.InValid = false;
 
         var numberOfYears = (new Date()).getYear() - 10;
-        var years = $.map($(Array(numberOfYears)), function (val, i) { return i + 1900; });
-        var months = $.map($(Array(12)), function (val, i) { return i + 1; });
-        var days = $.map($(Array(31)), function (val, i) { return i + 1; });
+        var years = $.map($(Array(numberOfYears)), function(val, i) { return i + 1900; });
+        var months = $.map($(Array(12)), function(val, i) { return i + 1; });
+        var days = $.map($(Array(31)), function(val, i) { return i + 1; });
 
-        var isLeapYear = function () {
+        var isLeapYear = function() {
             var year = $scope.SelectedYear || 0;
             return ((year % 400 === 0 || year % 100 !== 0) && (year % 4 === 0)) ? 1 : 0;
         }
 
-        var getNumberOfDaysInMonth = function () {
+        var getNumberOfDaysInMonth = function() {
             var selectedMonth = $scope.SelectedMonth || 0;
             return 31 - ((selectedMonth === 2) ? (3 - isLeapYear()) : ((selectedMonth - 1) % 7 % 2));
         }
 
-        $scope.UpdateNumberOfDays = function () {
+        $scope.UpdateNumberOfDays = function() {
             $scope.NumberOfDays = getNumberOfDaysInMonth();
         }
         $scope.NumberOfDays = 31;
@@ -39,27 +39,27 @@
         $scope.Genders = [{ Id: 0, Name: "Nữ" }, { Id: 1, Name: "Nam" }];
         accountService.getProvinces($scope.getProvincesCompleted, $scope.getError);
     }
-    $scope.initPersonalController = function () {
+    $scope.initPersonalController = function() {
         $scope.IsSuccess = false;
         $scope.IsError = false;
         $scope.InValid = false;
 
         var numberOfYears = (new Date()).getYear() - 10;
-        var years = $.map($(Array(numberOfYears)), function (val, i) { return i + 1900; });
-        var months = $.map($(Array(12)), function (val, i) { return i + 1; });
-        var days = $.map($(Array(31)), function (val, i) { return i + 1; });
+        var years = $.map($(Array(numberOfYears)), function(val, i) { return i + 1900; });
+        var months = $.map($(Array(12)), function(val, i) { return i + 1; });
+        var days = $.map($(Array(31)), function(val, i) { return i + 1; });
 
-        var isLeapYear = function () {
+        var isLeapYear = function() {
             var year = $scope.SelectedYear || 0;
             return ((year % 400 === 0 || year % 100 !== 0) && (year % 4 === 0)) ? 1 : 0;
         }
 
-        var getNumberOfDaysInMonth = function () {
+        var getNumberOfDaysInMonth = function() {
             var selectedMonth = $scope.SelectedMonth || 0;
             return 31 - ((selectedMonth === 2) ? (3 - isLeapYear()) : ((selectedMonth - 1) % 7 % 2));
         }
 
-        $scope.UpdateNumberOfDays = function () {
+        $scope.UpdateNumberOfDays = function() {
             $scope.NumberOfDays = getNumberOfDaysInMonth();
         }
         $scope.NumberOfDays = 31;
@@ -71,7 +71,7 @@
         accountService.getProvinces($scope.getProvinceUpdateCompleted, $scope.getError);
         accountService.getAccount($scope.getAccountCompleted, $scope.getError);
     }
-    $scope.getAccountCompleted = function (response) {
+    $scope.getAccountCompleted = function(response) {
 
         $scope.Id = response.Data.Id;
         $scope.Address = response.Data.Address;
@@ -99,114 +99,114 @@
         $scope.SelectedYear = $scope.Year;
         $scope.SelectedDay = $scope.Day;
     }
-    $scope.getProvincesCompleted = function (response) {
+    $scope.getProvincesCompleted = function(response) {
         if (response.Records.length > 0) {
             $scope.ProvinceId = response.Records[0].Id;
             $scope.getDistricts(response.Records[0].Id);
         }
         $scope.Provinces = response.Records;
     }
-    $scope.getProvinceUpdateCompleted = function (response) {
+    $scope.getProvinceUpdateCompleted = function(response) {
         $scope.Provinces = response.Records;
     }
 
-    $scope.getDistricts = function (provinceId) {
+    $scope.getDistricts = function(provinceId) {
         var obj = new Object();
         obj.provinceId = provinceId;
         accountService.getDistricts(obj, $scope.getDistrictsCompleted, $scope.getError);
     }
-    $scope.getDistrictsCompleted = function (response) {
+    $scope.getDistrictsCompleted = function(response) {
         if (response.Records.length > 0)
             $scope.DistrictId = response.Records[0].Id;
         $scope.Districts = response.Records;
     }
-    $scope.getDistrictUpdate = function (provinceId) {
+    $scope.getDistrictUpdate = function(provinceId) {
         var obj = new Object();
         obj.provinceId = provinceId;
         accountService.getDistricts(obj, $scope.getDistrictUpdateCompleted, $scope.getError);
     }
-    $scope.getDistrictUpdateCompleted = function (response) {
+    $scope.getDistrictUpdateCompleted = function(response) {
         $scope.Districts = response.Records;
     }
 
-    $scope.initObject = function () {
+    $scope.initObject = function() {
         $scope.IsSuccess = false;
         $scope.IsError = false;
         $scope.InValid = false;
     }
-    $scope.login = function (response) {
+    $scope.login = function(response) {
         var obj = new Object();
         obj.Email = $scope.Email;
         obj.Password = $scope.Password;
         accountService.login(obj, $scope.loginCompleted, $scope.loginError);
     }
-    $scope.loginCompleted = function (response) {
+    $scope.loginCompleted = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
-        $window.location.href = "/thong-tin-tai-khoan.html";
+        $window.location.href = "/thong-tin-tai-khoan.php";
     }
-    $scope.loginError = function (response) {
+    $scope.loginError = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
         $scope.Message = alertsService.FormatMessage(response.ReturnMessage);
     }
 
-    $scope.changePassword = function (response) {
+    $scope.changePassword = function(response) {
         var obj = new Object();
         obj.PasswordOld = $scope.PasswordOld;
         obj.Password = $scope.Password;
         obj.RePassword = $scope.RePassword;
         accountService.changePassword(obj, $scope.changePasswordCompleted, $scope.changePasswordError);
     }
-    $scope.changePasswordCompleted = function (response) {
+    $scope.changePasswordCompleted = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
     }
-    $scope.changePasswordError = function (response) {
+    $scope.changePasswordError = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
         $scope.Message = alertsService.FormatMessage(response.ReturnMessage);
     }
 
-    $scope.forgetPassword = function (response) {
+    $scope.forgetPassword = function(response) {
         var obj = new Object();
         obj.Email = $scope.Email;
         obj.Captcha = $scope.Captcha;
         accountService.forgetPassword(obj, $scope.forgetPasswordCompleted, $scope.forgetPasswordError);
     }
-    $scope.forgetPasswordCompleted = function (response) {
+    $scope.forgetPasswordCompleted = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
     }
-    $scope.forgetPasswordError = function (response) {
+    $scope.forgetPasswordError = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
         $scope.Message = alertsService.FormatMessage(response.ReturnMessage);
     }
 
-    $scope.signOut = function (response) {
+    $scope.signOut = function(response) {
         accountService.signOut($scope.signOutCompleted, $scope.signOutError);
     }
-    $scope.signOutCompleted = function (response) {
+    $scope.signOutCompleted = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
-        $window.location.href = "/trang-chu.html";
+        $window.location.href = "/trang-chu.php";
     }
-    $scope.signOutError = function (response) {
+    $scope.signOutError = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
         $scope.Message = alertsService.FormatMessage(response.ReturnMessage);
     }
 
-    $scope.register = function (response) {
+    $scope.register = function(response) {
         var obj = {
             Id: $scope.Id,
             Address: $scope.Address,
@@ -228,20 +228,20 @@
         };
         accountService.register(obj, $scope.registerCompleted, $scope.registerError);
     }
-    $scope.registerCompleted = function (response) {
+    $scope.registerCompleted = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
-        $window.location.href = "/trang-chu.html";
+        $window.location.href = "/trang-chu.php";
     }
-    $scope.registerError = function (response) {
+    $scope.registerError = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
         $scope.Message = alertsService.FormatMessage(response.ReturnMessage);
     }
 
-    $scope.update = function (response) {
+    $scope.update = function(response) {
         var obj = {
             Id: $scope.Id,
             Address: $scope.Address,
@@ -263,12 +263,12 @@
         };
         accountService.update(obj, $scope.updateCompleted, $scope.updateError);
     }
-    $scope.updateCompleted = function (response) {
+    $scope.updateCompleted = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;
     }
-    $scope.updateError = function (response) {
+    $scope.updateError = function(response) {
         $scope.IsSuccess = response.IsSuccess;
         $scope.IsError = response.IsError;
         $scope.InValid = response.InValid;

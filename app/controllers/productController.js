@@ -1,5 +1,5 @@
-﻿appMain.controller('productController', function ($scope, $rootScope, $element, $location, $window, productService, alertsService) {
-    $scope.initController = function (productId) {
+﻿appMain.controller('productController', function($scope, $rootScope, $element, $location, $window, productService, alertsService) {
+    $scope.initController = function(productId) {
         $element.removeClass("hidden");
         var obj = {
             Id: productId,
@@ -7,34 +7,33 @@
         $scope.initObject();
         productService.getProduct(obj, $scope.getProductCompleted, $scope.getError);
     }
-    $scope.initProductGroupController = function () {
+    $scope.initProductGroupController = function() {
         $scope.productGroup = window["ProductGroup"];
     }
-    $scope.initProductController = function () {
+    $scope.initProductController = function() {
         $scope.product = window["Product"];
     }
-    $scope.initProductBestSlideController = function (ProductBestSlides) {
+    $scope.initProductBestSlideController = function(ProductBestSlides) {
         $scope.ProductBestSlides = window[ProductBestSlides];;
         $scope.ConfigProduct = window['ConfigProduct'];
     }
-    $scope.initProductHotSlideController = function (ProductHotSlides) {
+    $scope.initProductHotSlideController = function(ProductHotSlides) {
         $scope.ProductHotSlides = window[ProductHotSlides];
         $scope.ConfigProduct = window['ConfigProduct'];
     }
-    $scope.initProductNewSlideController = function (ProductNewSlides) {
+    $scope.initProductNewSlideController = function(ProductNewSlides) {
         $scope.ProductNewSlides = window[ProductNewSlides];
         $scope.ConfigProduct = window['ConfigProduct'];
     }
-    $scope.initProductPromotionSlideController = function (ProductPromotionSlides) {
+    $scope.initProductPromotionSlideController = function(ProductPromotionSlides) {
         $scope.ProductPromotionSlides = window[ProductPromotionSlides];
         $scope.ConfigProduct = window['ConfigProduct'];
     }
-    $scope.AddToCard = function (product) {
+    $scope.AddToCard = function(product) {
         AddToCard(product.Id, 1);
     }
-    $scope.initObject = function () {
-    }
-    $scope.getProductVariant = function () {
+    $scope.initObject = function() {}
+    $scope.getProductVariant = function() {
         var obj = {
             ProductId: $scope.Id
         };
@@ -48,7 +47,7 @@
         }
         productService.getProductVariant(obj, $scope.getProductVariantCompleted, $scope.getError);
     }
-    $scope.getProductVariant = function (index, value) {
+    $scope.getProductVariant = function(index, value) {
         var obj = {
             ProductId: $scope.Id
         };
@@ -65,7 +64,7 @@
 
         productService.getProductVariant(obj, $scope.getProductVariantCompleted, $scope.getError);
     }
-    $scope.getProductCompleted = function (response) {
+    $scope.getProductCompleted = function(response) {
         $scope.Id = response.Data.Id;
         $scope.ProductGroupId = response.Data.ProductGroupId;
         $scope.Name = response.Data.Name;
@@ -102,11 +101,11 @@
         $scope.ProductTabs = response.Data.ModelShared_ProductTab;
         $scope.ProductOptions = response.Data.ModelShared_ProductOption;
         $scope.ProductVariants = response.Data.ModelShared_ProductVariant;
-        setTimeout(function () {
+        setTimeout(function() {
             $('.sp-wrap').smoothproducts();
         }, 0);
     }
-    $scope.getProductVariantCompleted = function (response) {
+    $scope.getProductVariantCompleted = function(response) {
         //$scope.variant = {
         //    Id: response.Data.Id,
         //    Name: response.Data.Name,
@@ -154,11 +153,9 @@
         if ($scope.Image != null)
             ActiveImage($scope.Image);
     }
-    $scope.getError = function (response) {
-    }
-    $scope.updateError = function (response) {
-    }
-    $scope.addToCard = function () {
+    $scope.getError = function(response) {}
+    $scope.updateError = function(response) {}
+    $scope.addToCard = function() {
         var obj = {
             ProductId: $scope.Id,
             Quantity: $scope.InputQuantity,
@@ -166,10 +163,10 @@
         };
         productService.addToCard(obj, $scope.addToCardCompleted, $scope.updateError);
     }
-    $scope.addToCardCompleted = function (response) {
+    $scope.addToCardCompleted = function(response) {
         $scope.getCart();
     }
-    $scope.addToCardBuy = function () {
+    $scope.addToCardBuy = function() {
         var obj = {
             ProductId: $scope.Id,
             Quantity: $scope.InputQuantity,
@@ -177,50 +174,50 @@
         };
         productService.addToCard(obj, $scope.addToCardBuyCompleted, $scope.updateError);
     }
-    $scope.addToCardBuyCompleted = function (response) {
-        $window.location.href = "/thanh-toan.html";
+    $scope.addToCardBuyCompleted = function(response) {
+        $window.location.href = "/thanh-toan.php";
     }
-    $scope.getCart = function () {
+    $scope.getCart = function() {
         productService.getCart($scope.getCartCompleted, $scope.getError);
     }
-    $scope.getCartCompleted = function (response) {
+    $scope.getCartCompleted = function(response) {
         $scope.Amount = response.Data.Amount;
         $scope.DiscountAmount = response.Data.DiscountAmount;
         $scope.OrderDetails = response.Data.ModelSM_OrderDetail;
         $('#modalMyCart').modal('toggle');
     }
-    $scope.updateItemCart = function (obj) {
+    $scope.updateItemCart = function(obj) {
         productService.updateItemCart(obj, $scope.updateItemCartCompleted, $scope.getError);
     }
-    $scope.removeItemCart = function (obj) {
+    $scope.removeItemCart = function(obj) {
         productService.removeItemCart(obj, $scope.removeItemCartCompleted, $scope.getError);
     }
-    $scope.updateItemCartCompleted = function (response) {
+    $scope.updateItemCartCompleted = function(response) {
         $scope.Amount = response.Data.Amount;
         $scope.DiscountAmount = response.Data.DiscountAmount;
         $scope.OrderDetails = response.Data.ModelSM_OrderDetail;
     }
-    $scope.removeItemCartCompleted = function (response) {
+    $scope.removeItemCartCompleted = function(response) {
         $scope.Amount = response.Data.Amount;
         $scope.DiscountAmount = response.Data.DiscountAmount;
         $scope.OrderDetails = response.Data.ModelSM_OrderDetail;
     }
 
-    $scope.UpQuantity = function () {
+    $scope.UpQuantity = function() {
         $scope.InputQuantity += 1;
     }
-    $scope.DownQuantity = function () {
+    $scope.DownQuantity = function() {
         if ($scope.InputQuantity > 1)
             $scope.InputQuantity -= 1;
 
     }
-    $scope.goToByScroll = function (index) {
+    $scope.goToByScroll = function(index) {
         $('html,body').animate({
             scrollTop: $("#tab" + index).offset().top - 50
         }, 'slow');
     }
 
-    $scope.callMe = function () {
+    $scope.callMe = function() {
         if ($scope.CustomerPhone == null || $scope.CustomerPhone == "")
             return;
         var obj = {
@@ -233,11 +230,11 @@
         };
         productService.callMe(obj, $scope.callMeCompleted, $scope.callMeError);
     }
-    $scope.callMeCompleted = function (response) {
+    $scope.callMeCompleted = function(response) {
         $scope.CustomerPhone = "";
         $('#modalCallMe').modal('toggle');
     }
-    $scope.callMeError = function (response) {
+    $scope.callMeError = function(response) {
         alert(response.Message);
     }
 });

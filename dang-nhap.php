@@ -31,7 +31,7 @@ include "./header2.php";
             $('#txtsearch').focus();
             return;
         }
-        window.location = 'tim-kiem08e2.html?key=' + key;
+        window.location = 'tim-kiem08e2.php?key=' + key;
     }
 
     function SearchProduct2() {
@@ -40,7 +40,7 @@ include "./header2.php";
             $('#txtsearch2').focus();
             return;
         }
-        window.location = 'tim-kiem08e2.html?key=' + key;
+        window.location = 'tim-kiem08e2.php?key=' + key;
     }
 </script>
 </div>
@@ -76,7 +76,7 @@ include "./header2.php";
                             <div class="form-group">
                                 <div class="col-sm-offset-4 col-sm-8">
                                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                                    <a href="quen-mat-khau.html">Quên mật khẩu?</a>
+                                    <a href="quen-mat-khau.php">Quên mật khẩu?</a>
                                 </div>
                             </div>
                         </form>

@@ -29,7 +29,7 @@ require_once('./connection.php');
             $('#txtsearch').focus();
             return;
         }
-        window.location = 'tim-kiem08e2.html?key=' + key;
+        window.location = 'tim-kiem08e2.php?key=' + key;
     }
 
     function SearchProduct2() {
@@ -38,7 +38,7 @@ require_once('./connection.php');
             $('#txtsearch2').focus();
             return;
         }
-        window.location = 'tim-kiem08e2.html?key=' + key;
+        window.location = 'tim-kiem08e2.php?key=' + key;
     }
 </script>
 <!--Template--
@@ -163,7 +163,7 @@ require_once('./connection.php');
                 <div class="box-adv" ng-controller="moduleController" ng-init="initAdvMenuController('AdvMenus')">
                     <div class="sidebar_banner" ng-repeat="item in AdvMenus">
                         <div class="img_banner">
-                            <a href="notfoundfba4.html">
+                            <a href="notfoundfba4.php">
                                 <img ng-src="{{item.Image}}" data-original="{{item.Image}}" alt="{{item.Name}}" class="img-responsive lazy">
                                 <div class="figcaption"></div>
                             </a>
@@ -178,13 +178,13 @@ require_once('./connection.php');
                     <div class="blog_content">
                         <div class="article_item">
                             <div class="article_img">
-                                <a href="tin-tuc/canh-rong-bien-thit-bo-9165.html">
+                                <a href="tin-tuc/canh-rong-bien-thit-bo-9165.php">
                                     <img src="Uploads/shop2005/images/news/vay_ba_bau.jpg" alt="Trang phục cho bà bầu" title="Trang phục cho bà bầu">
                                 </a>
                             </div>
                             <div class="article_content clearfix">
                                 <div class="title">
-                                    <h4><a href="tin-tuc/canh-rong-bien-thit-bo-9165.html" title="Trang phục cho bà bầu">Trang phục cho bà bầu</a>
+                                    <h4><a href="tin-tuc/canh-rong-bien-thit-bo-9165.php" title="Trang phục cho bà bầu">Trang phục cho bà bầu</a>
                                     </h4>
                                 </div>
                                 <div class="article_meta">
@@ -398,13 +398,13 @@ require_once('./connection.php');
                         <!-- <div id="blog_index_list" class="owl-carousel">
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/canh-rong-bien-thit-bo-9165.html">
+                                    <a href="tin-tuc/canh-rong-bien-thit-bo-9165.php">
                                         <img src="Uploads/shop2005/images/news/canh-rong-bien-thit-bo.jpg" alt="Canh Rong Biển Thịt B&#242;" title="Canh Rong Biển Thịt B&#242;">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/canh-rong-bien-thit-bo-9165.html" title="Canh Rong Biển Thịt B&#242;">Canh Rong Biển Thịt
+                                        <h4><a href="tin-tuc/canh-rong-bien-thit-bo-9165.php" title="Canh Rong Biển Thịt B&#242;">Canh Rong Biển Thịt
                                                 B&#242;</a></h4>
                                     </div>
                                     <div class="article_meta">
@@ -419,19 +419,19 @@ require_once('./connection.php');
                                         <p> Bước 1: Cho tất cả rong biển vào ngâm trong nước. Sau khoảng 15 phút, vớt ra...                        </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/canh-rong-bien-thit-bo-9165.html">Đọc tiếp
+                                    <a class="readmore" href="tin-tuc/canh-rong-bien-thit-bo-9165.php">Đọc tiếp
                                         <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/ca-hoi-nuong-giay-bac-9164.html">
+                                    <a href="tin-tuc/ca-hoi-nuong-giay-bac-9164.php">
                                         <img src="Uploads/shop2005/images/news/ca-hoi-nuong-giay-bac.jpg" alt="C&#225; Hồi nướng giấy bạc" title="C&#225; Hồi nướng giấy bạc">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/ca-hoi-nuong-giay-bac-9164.html" title="C&#225; Hồi nướng giấy bạc">C&#225; Hồi nướng giấy
+                                        <h4><a href="tin-tuc/ca-hoi-nuong-giay-bac-9164.php" title="C&#225; Hồi nướng giấy bạc">C&#225; Hồi nướng giấy
                                                 bạc</a></h4>
                                     </div>
                                     <div class="article_meta">
@@ -446,19 +446,19 @@ require_once('./connection.php');
                                         <p>Cá hồi không chỉ dùng ăn gỏi. Chúng ta còn có thể biến tấu phong phú hơn...          </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/ca-hoi-nuong-giay-bac-9164.html">Đọc tiếp
+                                    <a class="readmore" href="tin-tuc/ca-hoi-nuong-giay-bac-9164.php">Đọc tiếp
                                         <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/cach-che-bien-mon-ngon-tu-kho-ca-dua-9163.html">
+                                    <a href="tin-tuc/cach-che-bien-mon-ngon-tu-kho-ca-dua-9163.php">
                                         <img src="Uploads/shop2005/images/news/cach-che-bien-mon-ngon-tu-kho-ca-dua.jpg" alt="C&#225;ch chế biến m&#243;n ngon từ kh&#244; c&#225; dứa" title="C&#225;ch chế biến m&#243;n ngon từ kh&#244; c&#225; dứa">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/cach-che-bien-mon-ngon-tu-kho-ca-dua-9163.html" title="C&#225;ch chế biến m&#243;n ngon từ kh&#244; c&#225; dứa">C&#225;ch
+                                        <h4><a href="tin-tuc/cach-che-bien-mon-ngon-tu-kho-ca-dua-9163.php" title="C&#225;ch chế biến m&#243;n ngon từ kh&#244; c&#225; dứa">C&#225;ch
                                                 chế biến m&#243;n ngon từ kh&#244; c&#225; dứa</a></h4>
                                     </div>
                                     <div class="article_meta">
@@ -474,19 +474,19 @@ require_once('./connection.php');
                                         </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/cach-che-bien-mon-ngon-tu-kho-ca-dua-9163.html">Đọc tiếp
+                                    <a class="readmore" href="tin-tuc/cach-che-bien-mon-ngon-tu-kho-ca-dua-9163.php">Đọc tiếp
                                         <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/cach-lam-muc-tam-bot-chien-gion-thom-ngon-9162.html">
+                                    <a href="tin-tuc/cach-lam-muc-tam-bot-chien-gion-thom-ngon-9162.php">
                                         <img src="Uploads/shop2005/images/news/cach-lam-muc-tam-bot-chien-gion-thom-ngon.jpg" alt="C&#225;ch l&#224;m mực tẩm bột chi&#234;n gi&#242;n thơm ngon" title="C&#225;ch l&#224;m mực tẩm bột chi&#234;n gi&#242;n thơm ngon">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/cach-lam-muc-tam-bot-chien-gion-thom-ngon-9162.html" title="C&#225;ch l&#224;m mực tẩm bột chi&#234;n gi&#242;n thơm ngon">C&#225;ch
+                                        <h4><a href="tin-tuc/cach-lam-muc-tam-bot-chien-gion-thom-ngon-9162.php" title="C&#225;ch l&#224;m mực tẩm bột chi&#234;n gi&#242;n thơm ngon">C&#225;ch
                                                 l&#224;m mực tẩm bột chi&#234;n gi&#242;n thơm ngon</a></h4>
                                     </div>
                                     <div class="article_meta">
@@ -501,19 +501,19 @@ require_once('./connection.php');
                                         <p>Có rất nhiều món ăn được chế biến từ những nguyên liệu khá phổ biến và thưởng...                              </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/cach-lam-muc-tam-bot-chien-gion-thom-ngon-9162.html">Đọc
+                                    <a class="readmore" href="tin-tuc/cach-lam-muc-tam-bot-chien-gion-thom-ngon-9162.php">Đọc
                                         tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/muc-om-nuoc-dua-hat-sen-9161.html">
+                                    <a href="tin-tuc/muc-om-nuoc-dua-hat-sen-9161.php">
                                         <img src="Uploads/shop2005/images/news/muc-om-nuoc-dua-hat-sen.jpg" alt="Mực om nước dừa hạt sen" title="Mực om nước dừa hạt sen">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/muc-om-nuoc-dua-hat-sen-9161.html" title="Mực om nước dừa hạt sen">Mực om nước dừa hạt sen</a></h4>
+                                        <h4><a href="tin-tuc/muc-om-nuoc-dua-hat-sen-9161.php" title="Mực om nước dừa hạt sen">Mực om nước dừa hạt sen</a></h4>
                                     </div>
                                     <div class="article_meta">
                                         <div class="article_comment">
@@ -527,19 +527,19 @@ require_once('./connection.php');
                                         <p> 500 g mực ống tươi làm sạch và để nguyên con 150 g hạt sen 100 g giò sống 150 ml nước dừa Gia...                             </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/muc-om-nuoc-dua-hat-sen-9161.html">Đọc
+                                    <a class="readmore" href="tin-tuc/muc-om-nuoc-dua-hat-sen-9161.php">Đọc
                                         tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/tom-hap-bia-9160.html">
+                                    <a href="tin-tuc/tom-hap-bia-9160.php">
                                         <img src="Uploads/shop2005/images/news/tom-hap-bia.jpg" alt="T&#244;m hấp bia" title="T&#244;m hấp bia">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/tom-hap-bia-9160.html" title="T&#244;m hấp bia">T&#244;m hấp bia</a></h4>
+                                        <h4><a href="tin-tuc/tom-hap-bia-9160.php" title="T&#244;m hấp bia">T&#244;m hấp bia</a></h4>
                                     </div>
                                     <div class="article_meta">
                                         <div class="article_comment">
@@ -553,18 +553,18 @@ require_once('./connection.php');
                                         <p>Nguyên liệu làm món tôm hấp bia : – Tôm sú: 1kg . Chon tôm không – Bia: 1 lon– Sả:                                            </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/tom-hap-bia-9160.html">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    <a class="readmore" href="tin-tuc/tom-hap-bia-9160.php">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/cach-lam-lau-kim-chi-hai-san-9159.html">
+                                    <a href="tin-tuc/cach-lam-lau-kim-chi-hai-san-9159.php">
                                         <img src="Uploads/shop2005/images/news/cach-lam-lau-kim-chi-hai-san.jpg" alt="C&#225;ch l&#224;m lẩu kim chi hải sản" title="C&#225;ch l&#224;m lẩu kim chi hải sản">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/cach-lam-lau-kim-chi-hai-san-9159.html" title="C&#225;ch l&#224;m lẩu kim chi hải sản">C&#225;ch
+                                        <h4><a href="tin-tuc/cach-lam-lau-kim-chi-hai-san-9159.php" title="C&#225;ch l&#224;m lẩu kim chi hải sản">C&#225;ch
                                                 l&#224;m lẩu kim chi hải sản</a></h4>
                                     </div>
                                     <div class="article_meta">
@@ -579,18 +579,18 @@ require_once('./connection.php');
                                         <p>Lẩu kimchi chua chua cay cay lại thêm vị ngọt của hải sản, cực kỳ tuyệt vời luôn nhé!                                </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/cach-lam-lau-kim-chi-hai-san-9159.html">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    <a class="readmore" href="tin-tuc/cach-lam-lau-kim-chi-hai-san-9159.php">Đọc tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="article_item">
                                 <div class="article_img">
-                                    <a href="tin-tuc/muc-chien-xu-sot-wasabi-an-mot-mieng-la-me-man-ngay-9158.html">
+                                    <a href="tin-tuc/muc-chien-xu-sot-wasabi-an-mot-mieng-la-me-man-ngay-9158.php">
                                         <img src="Uploads/shop2005/images/news/muc-chien-xu-sot-wasabi-an-mot-mieng-la-me-man-ngay.jpg" alt="Mực chi&#234;n x&#249; sốt wasabi ăn một miếng l&#224; m&#234; mẩn ngay" title="Mực chi&#234;n x&#249; sốt wasabi ăn một miếng l&#224; m&#234; mẩn ngay">
                                     </a>
                                 </div>
                                 <div class="article_content clearfix">
                                     <div class="title">
-                                        <h4><a href="tin-tuc/muc-chien-xu-sot-wasabi-an-mot-mieng-la-me-man-ngay-9158.html" title="Mực chi&#234;n x&#249; sốt wasabi ăn một miếng l&#224; m&#234; mẩn ngay">Mực
+                                        <h4><a href="tin-tuc/muc-chien-xu-sot-wasabi-an-mot-mieng-la-me-man-ngay-9158.php" title="Mực chi&#234;n x&#249; sốt wasabi ăn một miếng l&#224; m&#234; mẩn ngay">Mực
                                                 chi&#234;n x&#249; sốt wasabi ăn một miếng l&#224; m&#234; mẩn
                                                 ngay</a></h4>
                                     </div>
@@ -606,7 +606,7 @@ require_once('./connection.php');
                                         <p>Mực chiên xù thì chẳng ai lạ lẫm gì nữa rồi, nhưng mực chiên xóc với sốt...                                             </p>
 
                                     </div>
-                                    <a class="readmore" href="tin-tuc/muc-chien-xu-sot-wasabi-an-mot-mieng-la-me-man-ngay-9158.html">Đọc
+                                    <a class="readmore" href="tin-tuc/muc-chien-xu-sot-wasabi-an-mot-mieng-la-me-man-ngay-9158.php">Đọc
                                         tiếp <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>

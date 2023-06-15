@@ -2,8 +2,7 @@ if ((typeof Haravan) == 'undefined') {
     var Haravan = {};
 }
 
-Haravan.cultures = [
-    {
+Haravan.cultures = [{
         code: 'vi-VN',
         thousands: ',',
         decimal: '.',
@@ -19,7 +18,7 @@ Haravan.cultures = [
     }
 ]
 
-Haravan.getCulture = function (code) {
+Haravan.getCulture = function(code) {
     var culture;
     for (n = 0; n < Haravan.cultures.length; n++) {
         if (Haravan.cultures[n].code == code) {
@@ -39,13 +38,13 @@ Haravan.money_format = "{{amount}}";
 // ---------------------------------------------------------------------------
 // Haravan generic helper methods
 // ---------------------------------------------------------------------------
-Haravan.each = function (ary, callback) {
+Haravan.each = function(ary, callback) {
     for (var i = 0; i < ary.length; i++) {
         callback(ary[i], i);
     }
 };
 
-Haravan.map = function (ary, callback) {
+Haravan.map = function(ary, callback) {
     var result = [];
     for (var i = 0; i < ary.length; i++) {
         result.push(callback(ary[i], i));
@@ -53,7 +52,7 @@ Haravan.map = function (ary, callback) {
     return result;
 };
 
-Haravan.arrayIncludes = function (ary, obj) {
+Haravan.arrayIncludes = function(ary, obj) {
     for (var i = 0; i < ary.length; i++) {
         if (ary[i] == obj) {
             return true;
@@ -62,7 +61,7 @@ Haravan.arrayIncludes = function (ary, obj) {
     return false;
 };
 
-Haravan.uniq = function (ary) {
+Haravan.uniq = function(ary) {
     var result = [];
     for (var i = 0; i < ary.length; i++) {
         if (!Haravan.arrayIncludes(result, ary[i])) { result.push(ary[i]); }
@@ -70,16 +69,16 @@ Haravan.uniq = function (ary) {
     return result;
 };
 
-Haravan.isDefined = function (obj) {
+Haravan.isDefined = function(obj) {
     return ((typeof obj == 'undefined') ? false : true);
 };
 
-Haravan.getClass = function (obj) {
+Haravan.getClass = function(obj) {
     return Object.prototype.toString.call(obj).slice(8, -1);
 };
 
-Haravan.extend = function (subClass, baseClass) {
-    function inheritance() { }
+Haravan.extend = function(subClass, baseClass) {
+    function inheritance() {}
     inheritance.prototype = baseClass.prototype;
 
     subClass.prototype = new inheritance();
@@ -88,7 +87,7 @@ Haravan.extend = function (subClass, baseClass) {
     subClass.superClass = baseClass.prototype;
 };
 
-Haravan.urlParam = function (name) {
+Haravan.urlParam = function(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
@@ -99,18 +98,18 @@ Haravan.urlParam = function (name) {
 // Haravan Product object
 // JS representation of Product
 // ---------------------------------------------------------------------------
-Haravan.Product = function (json) {
+Haravan.Product = function(json) {
     if (Haravan.isDefined(json)) { this.update(json); }
 };
 
-Haravan.Product.prototype.update = function (json) {
+Haravan.Product.prototype.update = function(json) {
     for (property in json) {
         this[property] = json[property];
     }
 };
 
 // returns array of option names for product
-Haravan.Product.prototype.optionNames = function () {
+Haravan.Product.prototype.optionNames = function() {
     if (Haravan.getClass(this.options) == 'Array') {
         return this.options;
     } else {
@@ -119,9 +118,9 @@ Haravan.Product.prototype.optionNames = function () {
 };
 
 // returns array of all option values (in order) for a given option name index
-Haravan.Product.prototype.optionValues = function (index) {
+Haravan.Product.prototype.optionValues = function(index) {
     if (!Haravan.isDefined(this.variants)) { return null; }
-    var results = Haravan.map(this.variants, function (e) {
+    var results = Haravan.map(this.variants, function(e) {
         var option_col = "option" + (index + 1);
         return (e[option_col] == undefined) ? null : e[option_col];
     });
@@ -129,11 +128,11 @@ Haravan.Product.prototype.optionValues = function (index) {
 };
 
 // return the variant object if exists with given values, otherwise return null
-Haravan.Product.prototype.getVariant = function (selectedValues) {
+Haravan.Product.prototype.getVariant = function(selectedValues) {
     var found = null;
     if (selectedValues.length != this.options.length) { return found; }
 
-    Haravan.each(this.variants, function (variant) {
+    Haravan.each(this.variants, function(variant) {
         var satisfied = true;
         for (var j = 0; j < selectedValues.length; j++) {
             var option_col = "option" + (j + 1);
@@ -149,7 +148,7 @@ Haravan.Product.prototype.getVariant = function (selectedValues) {
     return found;
 };
 
-Haravan.Product.prototype.getVariantById = function (id) {
+Haravan.Product.prototype.getVariantById = function(id) {
     for (var i = 0; i < this.variants.length; i++) {
         var variant = this.variants[i];
 
@@ -165,7 +164,7 @@ Haravan.Product.prototype.getVariantById = function (id) {
 // Money format handler
 // ---------------------------------------------------------------------------
 
-Haravan.formatMoney = function (cents, format) {
+Haravan.formatMoney = function(cents, format) {
     cents = cents / 100;
     if (typeof cents == 'string') cents = cents.replace(Haravan.format.thousands, '');
     var value = '';
@@ -195,14 +194,13 @@ Haravan.formatMoney = function (cents, format) {
 function floatToString(numeric, decimals) {
     var amount = numeric.toFixed(decimals).toString();
     amount.replace('.', Haravan.decimal);
-    if (amount.match('^[\.' + Haravan.decimal + ']\d+')) { return "0" + amount; }
-    else { return amount; }
+    if (amount.match('^[\.' + Haravan.decimal + ']\d+')) { return "0" + amount; } else { return amount; }
 }
 // ---------------------------------------------------------------------------
 // OptionSelectors(domid, options)
 //
 // ---------------------------------------------------------------------------
-Haravan.OptionSelectors = function (existingSelectorId, options) {
+Haravan.OptionSelectors = function(existingSelectorId, options) {
     this.selectorDivClass = 'selector-wrapper';
     this.selectorClass = 'single-option-selector';
     this.variantIdFieldIdSuffix = '-variant-id';
@@ -212,7 +210,7 @@ Haravan.OptionSelectors = function (existingSelectorId, options) {
     this.selectors = [];
     this.domIdPrefix = existingSelectorId;
     this.product = new Haravan.Product(options.product);
-    this.onVariantSelected = Haravan.isDefined(options.onVariantSelected) ? options.onVariantSelected : function () { };
+    this.onVariantSelected = Haravan.isDefined(options.onVariantSelected) ? options.onVariantSelected : function() {};
 
     this.replaceSelector(existingSelectorId); // create the dropdowns
     this.initDropdown();
@@ -224,13 +222,13 @@ Haravan.OptionSelectors = function (existingSelectorId, options) {
     return true;
 };
 
-Haravan.OptionSelectors.prototype.initDropdown = function () {
+Haravan.OptionSelectors.prototype.initDropdown = function() {
     var options = { initialLoad: true };
     var successDropdownSelection = this.selectVariantFromDropdown(options);
 
     if (!successDropdownSelection) {
         var self = this;
-        setTimeout(function () {
+        setTimeout(function() {
             if (!self.selectVariantFromParams(options)) {
                 self.fireOnChangeForFirstDropdown.call(self, options);
             }
@@ -238,13 +236,13 @@ Haravan.OptionSelectors.prototype.initDropdown = function () {
     }
 };
 
-Haravan.OptionSelectors.prototype.fireOnChangeForFirstDropdown = function (options) {
+Haravan.OptionSelectors.prototype.fireOnChangeForFirstDropdown = function(options) {
     if (!this.selectors && !this.selectors.length && this.selectors.length > 0) {
         this.selectors[0].element.onchange(options);
     }
 };
 
-Haravan.OptionSelectors.prototype.selectVariantFromParamsOrDropdown = function (options) {
+Haravan.OptionSelectors.prototype.selectVariantFromParamsOrDropdown = function(options) {
     var success = this.selectVariantFromParams(options)
 
     if (!success) {
@@ -253,11 +251,11 @@ Haravan.OptionSelectors.prototype.selectVariantFromParamsOrDropdown = function (
 };
 
 // insert new multi-selectors and hide original selector
-Haravan.OptionSelectors.prototype.replaceSelector = function (domId) {
+Haravan.OptionSelectors.prototype.replaceSelector = function(domId) {
     var oldSelector = document.getElementById(domId);
     if (oldSelector != null) {
         var parent = oldSelector.parentNode;
-        Haravan.each(this.buildSelectors(), function (el) {
+        Haravan.each(this.buildSelectors(), function(el) {
             parent.insertBefore(el, oldSelector);
         });
         oldSelector.style.display = 'none';
@@ -265,7 +263,7 @@ Haravan.OptionSelectors.prototype.replaceSelector = function (domId) {
     }
 };
 
-Haravan.OptionSelectors.prototype.selectVariantFromDropdown = function (options) {
+Haravan.OptionSelectors.prototype.selectVariantFromDropdown = function(options) {
     var option = document.getElementById(this.domIdPrefix);
     if (!option) {
         return false;
@@ -278,12 +276,12 @@ Haravan.OptionSelectors.prototype.selectVariantFromDropdown = function (options)
     return false;
 };
 
-Haravan.OptionSelectors.prototype.selectVariantFromParams = function (options) {
+Haravan.OptionSelectors.prototype.selectVariantFromParams = function(options) {
     var variantId = Haravan.urlParam("variant");
     return this.selectVariant(variantId, options);
 };
 
-Haravan.OptionSelectors.prototype.selectVariant = function (variantId, options) {
+Haravan.OptionSelectors.prototype.selectVariant = function(variantId, options) {
     var variant = this.product.getVariantById(variantId);
 
     if (variant == null) {
@@ -310,7 +308,7 @@ Haravan.OptionSelectors.prototype.selectVariant = function (variantId, options) 
     return true;
 };
 
-Haravan.OptionSelectors.prototype.optionExistInSelect = function (select, value) {
+Haravan.OptionSelectors.prototype.optionExistInSelect = function(select, value) {
     for (var i = 0; i < select.options.length; i++) {
         if (select.options[i].value == value) {
             return true;
@@ -320,21 +318,21 @@ Haravan.OptionSelectors.prototype.optionExistInSelect = function (select, value)
 
 // insertSelectors(domId, msgDomId)
 // create multi-selectors in the given domId, and use msgDomId to show messages
-Haravan.OptionSelectors.prototype.insertSelectors = function (domId, messageElementId) {
+Haravan.OptionSelectors.prototype.insertSelectors = function(domId, messageElementId) {
     if (Haravan.isDefined(messageElementId)) { this.setMessageElement(messageElementId); }
 
     this.domIdPrefix = "product-" + this.product.id + "-variant-selector";
 
     var parent = document.getElementById(domId);
     if (!parent) { return false };
-    Haravan.each(this.buildSelectors(), function (el) {
+    Haravan.each(this.buildSelectors(), function(el) {
         parent.appendChild(el);
     });
 };
 
 // buildSelectors(index)
 // create and return new selector element for given option
-Haravan.OptionSelectors.prototype.buildSelectors = function () {
+Haravan.OptionSelectors.prototype.buildSelectors = function() {
     // build selectors
     for (var i = 0; i < this.product.optionNames().length; i++) {
         var sel = new Haravan.SingleOptionSelector(this, i, this.product.optionNames()[i], this.product.optionValues(i));
@@ -345,14 +343,14 @@ Haravan.OptionSelectors.prototype.buildSelectors = function () {
     // replace existing selector with new selectors, new hidden input field, new hidden messageElement
     var divClass = this.selectorDivClass;
     var optionNames = this.product.optionNames();
-    var elements = Haravan.map(this.selectors, function (selector) {
+    var elements = Haravan.map(this.selectors, function(selector) {
         var div = document.createElement('div');
         div.setAttribute('class', divClass);
         // create label if more than 1 option (ie: more than one drop down)
         if (optionNames.length > 1) {
             // create and appened a label into div
             var label = document.createElement('label');
-            label.htmlFor = selector.element.id;
+            label.phpFor = selector.element.id;
             label.innerHTML = selector.name;
             div.appendChild(label);
         }
@@ -364,7 +362,7 @@ Haravan.OptionSelectors.prototype.buildSelectors = function () {
 };
 
 // returns array of currently selected values from all multiselectors
-Haravan.OptionSelectors.prototype.selectedValues = function () {
+Haravan.OptionSelectors.prototype.selectedValues = function() {
     var currValues = [];
     for (var i = 0; i < this.selectors.length; i++) {
         var thisValue = this.selectors[i].element.value;
@@ -374,7 +372,7 @@ Haravan.OptionSelectors.prototype.selectedValues = function () {
 };
 
 // callback when a selector is updated.
-Haravan.OptionSelectors.prototype.updateSelectors = function (index, options) {
+Haravan.OptionSelectors.prototype.updateSelectors = function(index, options) {
     var currValues = this.selectedValues(); // get current values
     var variant = this.product.getVariant(currValues);
     if (variant) {
@@ -384,7 +382,7 @@ Haravan.OptionSelectors.prototype.updateSelectors = function (index, options) {
         this.variantIdField.disabled = true;
     }
 
-    this.onVariantSelected(variant, this, options);  // callback
+    this.onVariantSelected(variant, this, options); // callback
 
     if (this.historyState != null) {
         this.historyState.onVariantChange(variant, this, options);
@@ -395,7 +393,7 @@ Haravan.OptionSelectors.prototype.updateSelectors = function (index, options) {
 //
 // ---------------------------------------------------------------------------
 
-Haravan.OptionSelectorsFromDOM = function (existingSelectorId, options) {
+Haravan.OptionSelectorsFromDOM = function(existingSelectorId, options) {
     // build product json from selectors
     // create new options hash
     var optionNames = options.optionNames || [];
@@ -409,7 +407,7 @@ Haravan.OptionSelectorsFromDOM = function (existingSelectorId, options) {
 Haravan.extend(Haravan.OptionSelectorsFromDOM, Haravan.OptionSelectors);
 
 // updates the product_json from existing select element
-Haravan.OptionSelectorsFromDOM.prototype.createProductFromSelector = function (domId, optionNames, priceFieldExists, delimiter) {
+Haravan.OptionSelectorsFromDOM.prototype.createProductFromSelector = function(domId, optionNames, priceFieldExists, delimiter) {
     if (!Haravan.isDefined(priceFieldExists)) { var priceFieldExists = true; }
     if (!Haravan.isDefined(delimiter)) { var delimiter = '/'; }
 
@@ -423,7 +421,7 @@ Haravan.OptionSelectorsFromDOM.prototype.createProductFromSelector = function (d
     // build product json + messages array
     var variants = [];
     var self = this;
-    Haravan.each(options, function (option, variantIndex) {
+    Haravan.each(options, function(option, variantIndex) {
         if (option.nodeType == 1 && option.tagName.toLowerCase() == 'option') {
             var chunks = option.innerHTML.split(new RegExp('\\s*\\' + delimiter + '\\s*'));
 
@@ -461,7 +459,7 @@ Haravan.OptionSelectorsFromDOM.prototype.createProductFromSelector = function (d
 // SingleOptionSelector
 // takes option name and values and creates a option selector from them
 // ---------------------------------------------------------------------------
-Haravan.SingleOptionSelector = function (multiSelector, index, name, values) {
+Haravan.SingleOptionSelector = function(multiSelector, index, name, values) {
     this.multiSelector = multiSelector;
     this.values = values;
     this.index = index;
@@ -478,7 +476,7 @@ Haravan.SingleOptionSelector = function (multiSelector, index, name, values) {
     this.element.setAttribute('class', this.multiSelector.selectorClass);
     this.element.setAttribute('data-option', 'option' + (index + 1));
     this.element.id = multiSelector.domIdPrefix + '-option-' + index;
-    this.element.onchange = function (event, options) {
+    this.element.onchange = function(event, options) {
         options = options || {};
 
         multiSelector.updateSelectors(index, options);
@@ -493,7 +491,7 @@ Haravan.SingleOptionSelector = function (multiSelector, index, name, values) {
 // ---------------------------------------------------------------------------
 Haravan.Image = {
 
-    preload: function (images, size) {
+    preload: function(images, size) {
         for (var i = 0; i < images.length; i++) {
             var image = images[i];
 
@@ -501,11 +499,11 @@ Haravan.Image = {
         }
     },
 
-    loadImage: function (path) {
+    loadImage: function(path) {
         new Image().src = path;
     },
 
-    switchImage: function (image, element, callback) {
+    switchImage: function(image, element, callback) {
         if (!image) {
             return;
         }
@@ -520,7 +518,7 @@ Haravan.Image = {
         }
     },
 
-    imageSize: function (src) {
+    imageSize: function(src) {
         var match = src.match(/(1024x1024|2048x2048|pico|icon|thumb|small|compact|medium|large|grande)\./);
 
         if (match != null) {
@@ -530,7 +528,7 @@ Haravan.Image = {
         }
     },
 
-    getSizedImageUrl: function (src, size) {
+    getSizedImageUrl: function(src, size) {
         if (size == null) {
             return src;
         }
@@ -551,7 +549,7 @@ Haravan.Image = {
         }
     },
 
-    removeProtocol: function (path) {
+    removeProtocol: function(path) {
         return path.replace(/http(s)?:/, "");
     }
 };
@@ -562,19 +560,19 @@ Haravan.Image = {
 // Gets events from Push State
 // ---------------------------------------------------------------------------
 
-Haravan.OptionSelectors.HistoryState = function (optionSelector) {
+Haravan.OptionSelectors.HistoryState = function(optionSelector) {
     if (this.browserSupports()) {
         this.register(optionSelector);
     }
 };
 
-Haravan.OptionSelectors.HistoryState.prototype.register = function (optionSelector) {
-    window.addEventListener("popstate", function (event) {
+Haravan.OptionSelectors.HistoryState.prototype.register = function(optionSelector) {
+    window.addEventListener("popstate", function(event) {
         optionSelector.selectVariantFromParamsOrDropdown({ popStateCall: true });
     });
 };
 
-Haravan.OptionSelectors.HistoryState.prototype.onVariantChange = function (variant, selector, data) {
+Haravan.OptionSelectors.HistoryState.prototype.onVariantChange = function(variant, selector, data) {
     if (this.browserSupports()) {
         if (variant && !data.initialLoad && !data.popStateCall) {
             window.history.pushState({}, document.title, "?variant=" + variant.id);
@@ -582,6 +580,6 @@ Haravan.OptionSelectors.HistoryState.prototype.onVariantChange = function (varia
     }
 };
 
-Haravan.OptionSelectors.HistoryState.prototype.browserSupports = function () {
+Haravan.OptionSelectors.HistoryState.prototype.browserSupports = function() {
     return window.history && window.history.pushState;
 };

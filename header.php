@@ -149,22 +149,40 @@ ob_start();
                                 <!-- Search -->
                                 <div class="search_box">
                                     <div class="search_wrapper">
-                                        <input type="text" name="search" class="index_input_search" id="txtsearch" onblur="if(this.value=='')this.value='Nhập từ khóa tìm kiếm...'" onfocus="if(this.value=='Nhập từ khóa tìm kiếm...')this.value=''" value="Nhập từ kh&#243;a t&#236;m kiếm..." />
-                                        <button class="btn_search_submit btn " type="button" id="btnsearch"><span><img src="assets/100004/images/icon_lookup.png" alt="search"></span></button>
+                                        <form action="search.php" method="GET">
+                                        <input type="text" name="search" class="index_input_search" id="txtsearch" placeholder='Nhập từ khóa tìm kiếm...' />
+                                        <button class="btn_search_submit btn " type="submit" id="btnsearch"><span><img src="assets/100004/images/icon_lookup.png" alt="search"></span></button>
+                                        </form>
                                     </div>
                                 </div>
                                 <!-- End Search -->
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <!-- Cart -->
+                                 <!-- Cart -->
+
+                                 <?php
+                                $total_quantity = 0;
+                                $total = 0;
+                                //Kiểm tra nếu giỏ hàng không rỗng
+                                if(!empty($_SESSION['cart'])) {
+                                    //Lặp lại từng sản phẩm trong giỏ hàng:
+                                    foreach($_SESSION['cart'] as $item) {
+                                        $total_quantity += $item['quantity'];
+                                        $subtotal = $item['product_price'] * $item['quantity'];
+                                        $total += $subtotal;
+                                    }
+                                }
+
+                                
+                                ?>
                                 <div class="cart_header">
                                     <a href="gio-hang.php" title="Giỏ hàng">
-                                        <span class="cart_header_icon">
-                                            <img src="assets/100004/images/cart42e7.png" alt="Responsive image">
-                                        </span>
+                                        <span class="cart_header_icon"></span>
                                         <span class="box_text">
-                                            <strong class="cart_header_count">Giỏ hàng <span>(0)</span></strong>
-                                            <span class="cart_price">0₫</span>
+                                            <strong class="cart_header_count">Giỏ hàng
+                                                <span>(<?php echo $total_quantity?>)</span></strong>
+                                            <span class="cart_price"><?php echo $total?>₫</span>
                                         </span>
                                     </a>
                                     <div class="cart_clone_box">
@@ -183,9 +201,35 @@ ob_start();
                                         </div>
                                     </div>
                                     <div class="cart_header_top_box">
-                                        <div class="cart_empty">Giỏ hàng của bạn vẫn chưa có sản phẩm nào.</div>
+                                        <div class="cart_empty">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sản phẩm</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Tổng tiền</th>
+            
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if(isset($_SESSION['cart'])){foreach($_SESSION['cart'] as $item) {
+                          $subtotal = $item['product_price'] * $item['quantity'];
+                          $total += $subtotal;
+                                                    
+                      ?>
+                                                    <tr>
+                                                        <td><?php echo $item['product_name']; ?></td>
+                                                        <td>  <?php echo $item['quantity']; ?></td>
+                                                        <td><?php echo number_format($subtotal); ?> đồng</td>
+                                                    </tr>
+                                                    <?php } }?>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- End Cart -->
                                 <!-- End Cart -->
                                 <!-- Account -->
                                 <div class="user_login">
@@ -212,60 +256,6 @@ ob_start();
                 <div id="mb_mainnav">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-3 col-sm-12 col-xs-12 vertical_menu">
-                                <div id="mb_verticle_menu" class="menu-quick-select">
-                                    <div class="title_block" style="margin-left: 0px; width: 220.675px;">
-                                        <span>Danh mục sản phẩm</span>
-                                    </div>
-                                    <div id="menuverti" class="block_content navbar_menuvertical">
-                                        <ul class='nav_verticalmenu' style="margin-left: 0px; width: 220.675px;">
-                                            <li class="has-child level0">
-                                                <a class=''><img class='icon-menu' src='Uploads/shop2005/images/icon/s1.png' alt='Thời trang bầu'>
-                                                    <span>Thời trang cho mẹ</span></a>
-                                                <ul class='level1'>
-                                                    <li class="level1"><a class='' href='quan-ao-bo-ba-bau.html'><span>Quần áo bà
-                                                                bầu</span></a></li>
-                                                    <li class="level1"><a class='' href='vay-cho-me.html'><span>Váy</span></a></li>
-                                                    <li class="level1"><a class='' href='ao-cho-me.html'><span>Áo</span></a></li>
-                                                </ul class='level1'>
-                                            </li>
-                                            <li class="has-child level0">
-                                                <a class=''><img class='icon-menu' src='Uploads/shop2005/images/icon/s2.png' alt='Thời trang sơ sinh'> <span>Thời trang sơ sinh</span></a>
-                                                <ul class='level1'>
-                                                    <li class="level1"><a class='' href='quan-ao-bo-so-sinh.html'><span>Quần áo bộ</span></a>
-                                                    </li>
-                                                    <li class="level1"><a class='' href='vo-khau-trang.html'><span>Vớ,
-                                                                khẩu trang, khăn voan</span></a></li>
-                                                    <li class="level1"><a class='' href='yem-ta.html'><span>Yếm, tã
-                                                                vải</span></a></li>
-                                                    <li class="level1"><a class='' href='non-bao-tay.html'><span>Nón,
-                                                                Bao tay chân</span></a></li>
-                                                </ul class='level1'>
-                                            </li>
-                                            <li class="has-child level0">
-                                                <a class=''><img class='icon-menu' src='Uploads/shop2005/images/icon/s3.png' alt='Thời trang bé gái'> <span>Thời trang bé gái</span></a>
-                                                <ul class='level1'>
-                                                    <li class="level1"><a class='' href='quan-ao-bo-be-gai.html'><span>Quần áo bộ</span></a>
-                                                    </li>
-                                                    <li class="level1"><a class='' href='vay-be-gai.html'><span>Váy</span></a></li>
-                                                    <li class="level1"><a class='' href='giay-dep-be-gai.html'><span>Giày dép,
-                                                                sandal</span></a></li>
-                                                </ul class='level1'>
-                                            </li>
-                                            <li class="has-child level0">
-                                                <a class=''><img class='icon-menu' src='Uploads/shop2005/images/icon/s4.png' alt='Thời trang bé trai'> <span>Thời trang bé trai</span></a>
-                                                <ul class='level1'>
-                                                    <li class="level1"><a class='' href='quan-ao-bo-be-trai.html'><span>Quần áo bộ</span></a>
-                                                    </li>
-                                                    <li class="level1"><a class='' href='non-be-trai.html'><span>Nón</span></a></li>
-                                                    <li class="level1"><a class='' href='giay-dep-be-trai.html'><span>Giày dép,
-                                                                sandal</span></a></li>
-                                                </ul class='level1'>
-                                            </li>
-                                        </ul class='nav_verticalmenu'>
-                                    </div>
-                                </div>
-                            </div>
                             <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
                                 <ul class='menu nav navbar-nav menu_hori'>
                                     <li class="level0"><a class='' href='index.php'><span>Trang chủ</span></a></li>
@@ -326,3 +316,8 @@ ob_start();
                 </div>
             </div>
             <!-- End header -->
+
+
+
+
+            

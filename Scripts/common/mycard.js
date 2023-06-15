@@ -1,4 +1,3 @@
-﻿
 function AddToCard(productId, quantity) {
     $.ajax({
         url: '/OrderModule/AddToCard',
@@ -6,20 +5,19 @@ function AddToCard(productId, quantity) {
         data: JSON.stringify({ 'productId': productId, 'quantity': quantity }),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        success: function (data) {
+        success: function(data) {
             if (data.Result == "OK") {
                 if (data.Data.IsVariant) {
-                    window.location.href = "/san-pham/" + data.Data.ProductCode + ".html";
-                }
-                else {
-                    window.location.href = "/gio-hang.html";
+                    window.location.href = "/san-pham/" + data.Data.ProductCode + ".php";
+                } else {
+                    window.location.href = "/gio-hang.php";
                 }
             }
         },
-        error: function () {
-        }
+        error: function() {}
     });
 }
+
 function RemoveItemCard(productId, variantId) {
     $.ajax({
         url: '/OrderModule/RemoveItemCard',
@@ -27,37 +25,36 @@ function RemoveItemCard(productId, variantId) {
         data: JSON.stringify({ 'productId': productId, 'variantId': variantId }),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        success: function (data) {
+        success: function(data) {
             if (data.Result == "OK") {
                 location.reload();
             }
         },
-        error: function () {
-        }
+        error: function() {}
     })
 }
+
 function UpdateQuantityCard(event, productId) {
     var quantity = $("#txtQuantity" + productId).val();
     if (!$.isNumeric(quantity) || quantity <= 0) {
         $("#txtQuantity" + productId).val('1');
-    }
-    else if (event.keyCode == 13) {
+    } else if (event.keyCode == 13) {
         $.ajax({
             url: '/OrderModule/UpdateQuantityCard',
             type: 'POST',
             data: JSON.stringify({ 'productId': productId, 'quantity': quantity }),
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
-            success: function (data) {
+            success: function(data) {
                 if (data.Result == "OK") {
                     location.reload();
                 }
             },
-            error: function () {
-            }
+            error: function() {}
         });
     }
 }
+
 function UpQuantityCard(productId) {
     $.ajax({
         url: '/OrderModule/UpQuantityCard',
@@ -65,13 +62,12 @@ function UpQuantityCard(productId) {
         data: JSON.stringify({ 'productId': productId }),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        success: function (data) {
+        success: function(data) {
             if (data.Result == "OK") {
                 location.reload();
             }
         },
-        error: function () {
-        }
+        error: function() {}
     });
 }
 
@@ -82,16 +78,11 @@ function DownQuantityCard(productId) {
         data: JSON.stringify({ 'productId': productId }),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        success: function (data) {
+        success: function(data) {
             if (data.Result == "OK") {
                 location.reload();
             }
         },
-        error: function () {
-        }
+        error: function() {}
     });
 }
-
-
-
-

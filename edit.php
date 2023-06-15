@@ -109,7 +109,7 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["UserType"])) {
             <button type="submit" class="btn btn-primary">Lưu</button>
         </div>
         </form>
-        </div>s
+        </div>
 <?php
     } else {
         $message = "Không tìm thấy Id !";

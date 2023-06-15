@@ -11,22 +11,28 @@ require_once('./connection.php');
 require 'PHPMailer_v6.8.0/src/PHPMailer.php';
 require 'PHPMailer_v6.8.0/src/SMTP.php';
 require 'PHPMailer_v6.8.0/src/Exception.php';
+
 if (!empty($_SESSION['cart'])) {
-    $total = 0;
-    $orderID = rand(0, 9999999999);
-    // Lấy thông tin người dùng từ session (giả sử đã lưu trong session)
+ 
     $userID = $_SESSION['UserID']; // Thay thế bằng key session tương ứng
     $orderDate = date('Y-m-d'); // Lấy ngày hiện tại
-    $query = "INSERT INTO shoppingorder (OrderID, UserID, OrderDate) VALUES ('$orderID', '$userID', '$orderDate')";
+    $query = "INSERT INTO shoppingorder (UserID, OrderDate) VALUES ('$userID', '$orderDate')";
     mysqli_query($conn, $query);
+
+    $orderID = mysqli_insert_id($conn); // Lấy OrderID của hàng cuối cùng được chèn vào cơ sở dữ liệu
+
+    $total = 0; // Initialize the total variable
+
     // Thêm thông tin từng sản phẩm trong giỏ hàng vào bảng `orderdetails`
     foreach ($_SESSION['cart'] as $product) {
         $productID = $product['product_id'];
         $quantity = $product['quantity'];
         $total += ($product['product_price'] * $product['quantity']);
+        
         $query = "INSERT INTO orderdetails (OrderID, ProductID, OrderDate, Quantity, Total) VALUES ('$orderID', '$productID', '$orderDate', '$quantity', '$total')";
         mysqli_query($conn, $query);
     }
+
     // Khởi tạo đối tượng PHPMailer
     $mail = new PHPMailer();
     // Cấu hình thông tin SMTP
