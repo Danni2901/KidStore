@@ -121,9 +121,9 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["UserType"])) {
                             <?php
                             // Thực hiện câu truy vấn để lấy dữ liệu từ bảng và sắp xếp theo OrderID
                             $sql = "SELECT so.OrderID, so.UserID, so.OrderDate, od.ProductID, od.Quantity, od.Total
-        FROM shoppingorder so
-        INNER JOIN orderdetails od ON so.OrderID = od.OrderID
-        ORDER BY so.OrderID";
+                    FROM shoppingorder so
+                    INNER JOIN orderdetails od ON so.OrderID = od.OrderID
+                    ORDER BY so.OrderID";
                             $result = mysqli_query($conn, $sql);
 
                             // Biến để lưu trữ OrderID trước đó
@@ -131,30 +131,36 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["UserType"])) {
 
                             // Hiển thị dữ liệu trong bảng Bootstrap
                             echo '<table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>OrderID</th>
-                <th>UserID</th>
-                <th>OrderDate</th>
-                <th>ProductID</th>
-                <th>Quantity</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>';
+                        <thead>
+                            <tr>
+                                <th>OrderID</th>
+                                <th>UserID</th>
+                                <th>OrderDate</th>
+                                <th>ProductID</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Xem chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
 
                             // Duyệt qua từng dòng dữ liệu và hiển thị trong bảng
                             while ($row = mysqli_fetch_assoc($result)) {
                                 // Kiểm tra nếu OrderID thay đổi, chỉ hiển thị dữ liệu khi có sự thay đổi
                                 if ($row['OrderID'] !== $previousOrderID) {
                                     echo '<tr>
-                <td>' . $row['OrderID'] . '</td>
-                <td>' . $row['UserID'] . '</td>
-                <td>' . $row['OrderDate'] . '</td>
-                <td>' . $row['ProductID'] . '</td>
-                <td>' . $row['Quantity'] . '</td>
-                <td>' . $row['Total'] . '</td>
-              </tr>';
+                                <td>' . $row['OrderID'] . '</td>
+                                <td>' . $row['UserID'] . '</td>
+                                <td>' . $row['OrderDate'] . '</td>
+                                <td>' . $row['ProductID'] . '</td>
+                                <td>' . $row['Quantity'] . '</td>
+                                <td>' . $row['Total'] . '</td>
+                                <td>
+                                    <button class="btn btn-success btn-view-details" data-toggle="modal" data-target="#orderDetailsModal" data-orderid="'.$row['OrderID'].'"?>
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </button>
+                                </td>
+                            </tr>';
 
                                     // Cập nhật OrderID trước đó
                                     $previousOrderID = $row['OrderID'];
@@ -179,6 +185,26 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["UserType"])) {
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderDetailsModalLabel">Chi tiết Đơn hàng</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="orderDetailsContent"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
             <?php
             $sql = "SELECT p.*, c.CategoryName, i.URL
                         FROM products p
@@ -245,7 +271,38 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["UserType"])) {
                 }
                 document.getElementById('productId').value = productId;
             }
+
+            $(document).ready(function() {
+                $(".btn-view-details").click(function() {
+                    var orderID = $(this).data("orderid");
+
+                    // Gửi yêu cầu Ajax để lấy thông tin chi tiết đơn hàng từ server
+                    $.ajax({
+                        url: "get_order_details.php?orderID=" + orderID, // Đường dẫn tới file PHP xử lý yêu cầu
+                        type: "GET",
+                        success: function(response) {
+                            // Chuyển đổi phản hồi JSON thành đối tượng JavaScript
+                            var order = JSON.parse(response);
+                            console.log(response);
+                            // Hiển thị thông tin chi tiết đơn hàng trong modal
+                            var html = "<p>Order ID: " + order.OrderID + "</p>";
+                            html += "<p>User ID: " + order.UserID + "</p>";
+                            html += "<p>Order Date: " + order.OrderDate + "</p>";
+                            html += "<p>Product ID: " + order.ProductID + "</p>";
+                            html += "<p>Quantity: " + order.Quantity + "</p>";
+                            html += "<p>Total: " + order.Total + "</p>";
+                            html += "<p>Product Name: " + order.ProductName + "</p>";
+                            html += "<p>Description: " + order.Description + "</p>";
+
+                            $("#orderDetailsContent").html(html);
+                        }
+                    });
+                });
+            });
+
+
         </script>
+
 
 <?php
         if (isset($_POST['CategoryId']) && isset($_POST['CategoryName']) && isset($_POST['CategoryType'])) {
@@ -343,3 +400,4 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["UserType"])) {
 
     include "./footer.php";
 }
+

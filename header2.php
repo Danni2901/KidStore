@@ -72,6 +72,8 @@ ob_start();
     <script src="app/services/alertsServices.js"></script>
     <link href="assets/100004/style.css" rel="stylesheet" type="text/css" />
     <link href="assets/100004/responsive.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body ng-app="appMain" cz-shortcut-listen="true">
